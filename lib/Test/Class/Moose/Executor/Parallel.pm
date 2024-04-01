@@ -116,6 +116,8 @@ sub _run_test_classes_in_parallel {
         }
 
         # This chunk of code only runs in child processes
+        my $child_pid = $$;
+
         my $class_report;
         $subtest->attach($id);
         $subtest->run(
@@ -123,8 +125,18 @@ sub _run_test_classes_in_parallel {
                 $class_report = $self->run_test_class($test_class);
             }
         );
-        $subtest->detach;
-        $self->_fork_manager->finish( 0, \$class_report );
+
+        # if the test class also creates forks, and one of those forks dies,
+        # the dead child ends up running here, and causes subsequent problems
+        # with Test2::AsyncSubtest::detach, and can potentially cascade into
+        # all kinds of other problems during global destruction. i have no
+        # idea how a grandchild death can end up running this code...
+        if ($$ == $child_pid) {
+            $subtest->detach;
+            $self->_fork_manager->finish( 0, \$class_report );
+        } else {
+            warn "Ignoring unknown child pid $$, did a grandchild pid die?";
+        }
     }
 
     $self->_fork_manager->wait_all_children;
