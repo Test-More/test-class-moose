@@ -96,8 +96,9 @@ sub _test_class_is_parallelizable {
             $_,
             'noparallel'
         );
-    }
-    $self->_test_methods_for($test_class);
+      }
+
+      $self->_test_methods_for($test_class);
 }
 
 sub _run_test_classes_in_parallel {
@@ -131,10 +132,11 @@ sub _run_test_classes_in_parallel {
         # with Test2::AsyncSubtest::detach, and can potentially cascade into
         # all kinds of other problems during global destruction. i have no
         # idea how a grandchild death can end up running this code...
-        if ($$ == $child_pid) {
+        if ( $$ == $child_pid ) {
             $subtest->detach;
             $self->_fork_manager->finish( 0, \$class_report );
-        } else {
+        }
+        else {
             warn "Ignoring unknown child pid $$, did a grandchild pid die?";
         }
     }
