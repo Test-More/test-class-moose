@@ -17,6 +17,10 @@ use List::SomeUtils qw(uniq);
 use List::Util qw(shuffle);
 use Test2::API qw( test2_stack );
 use Test2::Tools::AsyncSubtest qw( async_subtest );
+BEGIN {
+    require Test2::AsyncSubtest::Hub;
+    Test2::AsyncSubtest::Hub->do_not_warn_on_plan();
+}
 use Test::Class::Moose::AttributeRegistry;
 use Test::Class::Moose::Config;
 use Test::Class::Moose::Report::Class;

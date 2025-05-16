@@ -22,7 +22,11 @@ use Parallel::ForkManager;
 use Scalar::Util qw(reftype);
 use TAP::Formatter::Color 3.29;
 use Test2::API qw( test2_stack );
-use Test2::AsyncSubtest 0.000018 ();
+use Test2::AsyncSubtest 1.302212 ();
+BEGIN {
+    require Test2::AsyncSubtest::Hub;
+    Test2::AsyncSubtest::Hub->do_not_warn_on_plan();
+}
 use Test::Class::Moose::AttributeRegistry;
 use Test::Class::Moose::Report::Class;
 use Try::Tiny;

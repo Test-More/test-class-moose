@@ -4,7 +4,7 @@ Test::Class::Moose - Serious testing for serious Perl
 
 # VERSION
 
-version 0.99
+version 1.00
 
 # SYNOPSIS
 
@@ -31,8 +31,8 @@ version 0.99
 
 # DESCRIPTION
 
-See the [Test::Class::Moose home page](http://test-more.github.io/test-class-moose/) for
-a summary.
+See the [Test::Class::Moose home
+page](http://test-more.github.io/test-class-moose/) for a summary.
 
 `Test::Class::Moose` is a powerful testing framework for Perl. Out of the box
 you get:
@@ -57,15 +57,15 @@ Just `use Test::Class::Moose`. That's all. You'll get all [Test::Most](https://m
 functions, too, along with `strict` and `warnings`. You can use all [Moose](https://metacpan.org/pod/Moose)
 behavior, too.
 
-When you `use Test::Class::Moose` it inserts itself as a parent class for
-your test class. This means that if you try to use `extends` in your test
-class you will break things unless you include `Test::Class::Moose` as a
-parent. We recommend that you use roles in your test classes instead.
+When you `use Test::Class::Moose` it inserts itself as a parent class for your
+test class. This means that if you try to use `extends` in your test class you
+will break things unless you include `Test::Class::Moose` as a parent. We
+recommend that you use roles in your test classes instead.
 
 ## Declare a test method
 
-All method names that begin with `test_` are test methods. Methods that do
-not are not test methods.
+All method names that begin with `test_` are test methods. Methods that do not
+are not test methods.
 
     sub test_this_is_a_method {
         my $test = shift;
@@ -80,8 +80,8 @@ not are not test methods.
     }
 
 You may specify `Test` and `Tests` method attributes, just like in
-[Test::Class](https://metacpan.org/pod/Test%3A%3AClass) and the method will automatically be a test method, even if
-does not start with `test_`:
+[Test::Class](https://metacpan.org/pod/Test%3A%3AClass) and the method will automatically be a test method, even if does
+not start with `test_`:
 
     sub this_is_a_test : Test {
         pass 'we have a single test';
@@ -132,9 +132,9 @@ method modifier:
         # more tests
     };
 
-Please note that if you call `plan`, the plan will still show up at the end
-of the subtest run, but you'll get the desired failure if the number of tests
-run does not match the plan.
+Please note that if you call `plan`, the plan will still show up at the end of
+the subtest run, but you'll get the desired failure if the number of tests run
+does not match the plan.
 
 ## Inheriting from another Test::Class::Moose class
 
@@ -243,13 +243,13 @@ The available test control methods are:
     }
 
 Runs at the start of each test class. Quite often the base class that you
-inherit from will have its own `test_startup` code running (such as starting
-a database transaction or connecting to an external resource). You almost
-always want to call `$test->next::method` _before_ your own setup code.
-This ensures that the environment is set up to safely run your code. For
-example, if the parent `test_startup` starts a database transaction with the
-expectation that the `test_teardown` will end the database transactions, you
-can safely load database fixtures _after_ that is run.
+inherit from will have its own `test_startup` code running (such as starting a
+database transaction or connecting to an external resource). You almost always
+want to call `$test->next::method` _before_ your own setup code. This
+ensures that the environment is set up to safely run your code. For example, if
+the parent `test_startup` starts a database transaction with the expectation
+that the `test_teardown` will end the database transactions, you can safely
+load database fixtures _after_ that is run.
 
 If you need to know the name of the class you're running this in (though
 usually you shouldn't), use `$test->test_class`, or you can do this:
@@ -262,8 +262,8 @@ usually you shouldn't), use `$test->test_class`, or you can do this:
         ...
     }
 
-The `$test->test_report` object is a [Test::Class::Moose::Report::Instance](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3AReport%3A%3AInstance)
-object.
+The `$test->test_report` object is a
+[Test::Class::Moose::Report::Instance](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3AReport%3A%3AInstance) object.
 
 ## `test_setup`
 
@@ -330,10 +330,10 @@ can tell the [Test::Class::Moose::Runner](https://metacpan.org/pod/Test%3A%3ACla
 test class.
 
 To do this, simply consume the
-[Test::Class::Moose::Role::ParameterizedInstances](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3ARole%3A%3AParameterizedInstances) role in your test
-class. This role requires you to implement a `_constructor_parameter_sets`
-method in your test class. That method will be called as a _class method_. It
-is expected to return a list of key/value pairs. The keys are the name of the
+[Test::Class::Moose::Role::ParameterizedInstances](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3ARole%3A%3AParameterizedInstances) role in your test class.
+This role requires you to implement a `_constructor_parameter_sets` method in
+your test class. That method will be called as a _class method_. It is
+expected to return a list of key/value pairs. The keys are the name of the
 instance and the values are hashrefs of attributes to be passed to your test
 class's constructor. Here's a really dumb example:
 
@@ -362,15 +362,15 @@ instance_, and each instance will be run in its own subtest. You can
 dynamically decide to skip your test class completely by having
 `_constructor_parameter_sets` return an empty list.
 
-Note that this feature has great potential for abuse, so use it
-cautiously. That said, there are cases where this feature can greatly simplify
-your test code.
+Note that this feature has great potential for abuse, so use it cautiously.
+That said, there are cases where this feature can greatly simplify your test
+code.
 
 # RUNNING THE TEST SUITE
 
-See the docs for [Test::Class::Moose::Runner](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3ARunner) for details on running your
-test suite. If you'd like to get up and running quickly, here's a very simple
-test file you can use:
+See the docs for [Test::Class::Moose::Runner](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3ARunner) for details on running your test
+suite. If you'd like to get up and running quickly, here's a very simple test
+file you can use:
 
     use Test::Class::Moose::CLI;
     Test::Class::Moose::CLI->new_with_options->run;
@@ -390,9 +390,9 @@ If you wish to skip a class, set the reason in the `test_startup` method.
         $test->test_skip("I don't want to run this class");
     }
 
-If you are using [test class instances](#test-class-instances), you
-can also make `_constructor_parameter_sets` return an empty list,
-which will result in the class being skipped.
+If you are using [test class instances](#test-class-instances), you can also
+make `_constructor_parameter_sets` return an empty list, which will result in
+the class being skipped.
 
 Note that if you run `test_skip`, the `test_shutdown` method will also be
 skipped. This is due to the assumption that you might not have run any setup
@@ -415,11 +415,11 @@ If you wish to skip an individual method, do so in the `test_setup` method.
 
 ## The "Tests" and "Test" Attributes
 
-If you're comfortable with [Test::Class](https://metacpan.org/pod/Test%3A%3AClass), you know that test methods methods are
-declared in [Test::Class](https://metacpan.org/pod/Test%3A%3AClass) with `Test` (for a method with a single test) or
-`Tests`, for a method with multiple tests. This also works for
-`Test::Class::Moose`. Test methods declared this way do not need to start
-with `test_`.
+If you're comfortable with [Test::Class](https://metacpan.org/pod/Test%3A%3AClass), you know that test methods methods
+are declared in [Test::Class](https://metacpan.org/pod/Test%3A%3AClass) with `Test` (for a method with a single test)
+or `Tests`, for a method with multiple tests. This also works for
+`Test::Class::Moose`. Test methods declared this way do not need to start with
+`test_`.
 
     sub something_we_want_to_check : Test {
         # this method may have only one test
@@ -457,22 +457,22 @@ And later:
     }
 
 In the above example, `TestsFor::Parent::some_test` will run three tests, but
-`TestsFor::Child::some_test` will run _five_ tests (two tests, plus the
-three from the parent).
+`TestsFor::Child::some_test` will run _five_ tests (two tests, plus the three
+from the parent).
 
-Note that if a plan is explicitly declared, any modifiers or overriding
-methods calling the original method will also have to assert the number of
-tests to ensure the plan is correct. The above `TestsFor::Parent` and
-`TestsFor::Child` code would fail if the child's `some_test` method
-attribute was `Tests` without the number of tests asserted.
+Note that if a plan is explicitly declared, any modifiers or overriding methods
+calling the original method will also have to assert the number of tests to
+ensure the plan is correct. The above `TestsFor::Parent` and
+`TestsFor::Child` code would fail if the child's `some_test` method attribute
+was `Tests` without the number of tests asserted.
 
 Do not use `Test` or `Tests` with test control methods because you don't run
 tests in those.
 
 ## Tagging Methods
 
-Sometimes you want to be able to assign metadata to help you better manage
-your test suite. You can do this with tags:
+Sometimes you want to be able to assign metadata to help you better manage your
+test suite. You can do this with tags:
 
     sub test_save_poll_data : Tags(api network) {
         ...
@@ -514,19 +514,20 @@ optional. Now it's mandatory, so those features should always work.
 ... but probably shouldn't.
 
 As a general rule, methods beginning with `/^test_/` are reserved for
-[Test::Class::Moose](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose). This makes it easier to remember what you can and
-cannot override. However, any test with `Test` or `Tests` are test methods
+[Test::Class::Moose](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose). This makes it easier to remember what you can and cannot
+override. However, any test with `Test` or `Tests` are test methods
 regardless of their names.
 
 ## `test_report`
 
     my $report = $test->test_report;
 
-Returns the [Test::Class::Moose::Report](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3AReport) object. Useful if you want to do
-your own reporting and not rely on the default output provided with the
+Returns the [Test::Class::Moose::Report](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3AReport) object. Useful if you want to do your
+own reporting and not rely on the default output provided with the
 `statistics` boolean option.
 
-You can also call it in test classes (most useful in the `test_setup()` method):
+You can also call it in test classes (most useful in the `test_setup()`
+method):
 
     sub test_setup {
         my $test = shift;
@@ -688,9 +689,9 @@ for you, see [Test::Class::Moose::Role::AutoUse](https://metacpan.org/pod/Test%3
 
 ## Version 0.79
 
-- The [Test::Class::Moose::Config](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3AConfig) class's `args` method is now
-deprecated. This was a holdover from when Test::Class::Moose was both a parent
-class for your test classes and the test class runner.
+- The [Test::Class::Moose::Config](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3AConfig) class's `args` method is now deprecated.
+This was a holdover from when Test::Class::Moose was both a parent class for
+your test classes and the test class runner.
 
 ## Version 0.77
 
@@ -708,10 +709,9 @@ done anything except issue a warning since version 0.55.
 `run_control_methods_on_skip` returns a true value. The `test_teardown`
 method was never intended to be run unconditionally.
 - Parallel testing now parallelizes test classes rather than individual test
-instances. This is only relevant if your test suite contains parameterized
-test classes. This is slightly less efficient, but made the internal test
-running code much simpler and made it possible to fix reporting for parallel
-test runs.
+instances. This is only relevant if your test suite contains parameterized test
+classes. This is slightly less efficient, but made the internal test running
+code much simpler and made it possible to fix reporting for parallel test runs.
 - The [Test::Class::Moose::Config](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3AConfig) `builder` method has been removed.
 - The [Test::Class::Moose::Runner](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3ARunner) `builder` method has been removed.
 
@@ -719,32 +719,33 @@ test runs.
 
 - The [Test::Class::Moose::Report](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3AReport) class's `all_test_classes` method is un-deprecated
 
-    This method now returns a list of [Test::Class::Moose::Report::Class](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3AReport%3A%3AClass)
-    objects. A class report contains one or more instance reports.
+    This method now returns a list of [Test::Class::Moose::Report::Class](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3AReport%3A%3AClass) objects.
+    A class report contains one or more instance reports.
 
-- Removed the [Test::Class::Moose::Report::Instance](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3AReport%3A%3AInstance)'s error
-attribute. Contrary to the documentation, this attribute was never populated.
+- Removed the [Test::Class::Moose::Report::Instance](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3AReport%3A%3AInstance)'s error attribute. Contrary
+to the documentation, this attribute was never populated.
 - Renamed the [Test::Class::Moose::Report::Method](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3AReport%3A%3AMethod) `instance_report` method to
 `instance`. This is a better match for other report-related methods, which
 don't include a "\_report" suffix.
 - Removed the long-deprecated `tests_run` methods from
 [Test::Class::Moose::Report](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3AReport) and [Test::Class::Moose::Report::Method](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3AReport%3A%3AMethod).
-- Removed the long-deprecated `Test::Class::Moose::Report::Method->add_to_plan method`.
+- Removed the long-deprecated `Test::Class::Moose::Report::Method->add_to_plan
+method`.
 
 ## Version 0.55
 
 - Running tests with Test::Class::Moose is deprecated - use [Test::Class::Moose::Runner](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3ARunner)
 
-    As of version 0.55, running tests and being a test class have been
-    separated. Your test classes should continue to `use Test::Class::Moose`, but
-    your test runner script should use [Test::Class::Moose::Runner](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3ARunner):
+    As of version 0.55, running tests and being a test class have been separated.
+    Your test classes should continue to `use Test::Class::Moose`, but your test
+    runner script should use [Test::Class::Moose::Runner](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3ARunner):
 
         use Test::Class::Moose::Load 't/lib';
         use Test::Class::Moose::Runner;
         Test::Class::Moose::Runner->new->runtests;
 
-    Calling `Test::Class::Moose->new->runtests` still works, but is
-    deprecated and will issue a warning.
+    Calling `Test::Class::Moose->new->runtests` still works, but is deprecated
+    and will issue a warning.
 
 - Parallel testing is totally different
 
@@ -755,8 +756,8 @@ don't include a "\_report" suffix.
 - The [Test::Class::Moose::Report](https://metacpan.org/pod/Test%3A%3AClass%3A%3AMoose%3A%3AReport) `all_test_classes` method is deprecated
 
     This has been replaced with the `all_test_instances` method. The
-    `all_test_classes` method is still present for backwards compatibility, but
-    it simply calls `all_test_instances` under the hood.
+    `all_test_classes` method is still present for backwards compatibility, but it
+    simply calls `all_test_instances` under the hood.
 
 - The `Test::Class::Moose::Report::Class` class is gone
 
@@ -793,9 +794,9 @@ don't include a "\_report" suffix.
             ...
         }
 
-    That second argument is still passed, but it's deprecated. It's now
-    recommended that you call the `$test->test_report` method to get that.
-    Instead of this:
+    That second argument is still passed, but it's deprecated. It's now recommended
+    that you call the `$test->test_report` method to get that. Instead of
+    this:
 
         sub test_froblinator {
             my ( $test, $report ) = @_;
@@ -837,9 +838,9 @@ You can also look for information at:
 - [Test::Routine](https://metacpan.org/pod/Test%3A%3ARoutine)
 
     I always pointed people to this when they would ask about [Test::Class](https://metacpan.org/pod/Test%3A%3AClass) +
-    [Moose](https://metacpan.org/pod/Moose), but I would always hear "that's not quite what I'm looking for".
-    I don't quite understand what the reasoning was, but I strongly encourage you
-    to take a look at [Test::Routine](https://metacpan.org/pod/Test%3A%3ARoutine).
+    [Moose](https://metacpan.org/pod/Moose), but I would always hear "that's not quite what I'm looking for". I
+    don't quite understand what the reasoning was, but I strongly encourage you to
+    take a look at [Test::Routine](https://metacpan.org/pod/Test%3A%3ARoutine).
 
 - [Test::Roo](https://metacpan.org/pod/Test%3A%3ARoo)
 
@@ -857,8 +858,6 @@ You can also look for information at:
 
 Bugs may be submitted at [https://github.com/Test-More/test-class-moose/issues](https://github.com/Test-More/test-class-moose/issues).
 
-I am also usually active on IRC as 'autarch' on `irc://irc.perl.org`.
-
 # SOURCE
 
 The source code repository for Test-Class-Moose can be found at [https://github.com/Test-More/test-class-moose](https://github.com/Test-More/test-class-moose).
@@ -872,6 +871,7 @@ The source code repository for Test-Class-Moose can be found at [https://github.
 # CONTRIBUTORS
 
 - Andy Jack <github@veracity.ca>
+- Chad Granum <exodist7@gmail.com>
 - Christopher Layne <clayne@apple.com>
 - Chuck Adams &lt;charles\_adams@symantec.com>
 - Denny de la Haye <denny@users.noreply.github.com>
@@ -888,6 +888,7 @@ The source code repository for Test-Class-Moose can be found at [https://github.
 - Larry Leszczynski <larryl@cpan.org>
 - mark-5 <maflick88@gmail.com>
 - mephinet <mephinet@gmx.net>
+- Mike Jones <mike@netsplit.org.uk>
 - Neil Bowers <neil@bowers.com>
 - Olaf Alders <olaf@wundersolutions.com>
 - Paul Boyd <pboyd@dev3l.net>
@@ -902,7 +903,7 @@ The source code repository for Test-Class-Moose can be found at [https://github.
 
 # COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 - 2021 by Curtis "Ovid" Poe.
+This software is copyright (c) 2012 - 2025 by Curtis "Ovid" Poe.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
