@@ -11,7 +11,7 @@ use ExtUtils::MakeMaker;
 
 my %WriteMakefileArgs = (
   "ABSTRACT" => "Serious testing for serious Perl",
-  "AUTHOR" => "Curtis \"Ovid\" Poe <ovid\@cpan.org>, Dave Rolsky <autarch\@urth.org>",
+  "AUTHOR" => "Curtis \"Ovid\" Poe <ovid\@cpan.org>, Dave Rolsky <autarch\@urth.org>, Chad Granum <exodist\@cpan.org>",
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0
   },

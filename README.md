@@ -31,7 +31,7 @@ version 0.99
 
 # DESCRIPTION
 
-See the [Test::Class::Moose home page](http://houseabsolute.github.io/test-class-moose/) for
+See the [Test::Class::Moose home page](http://test-more.github.io/test-class-moose/) for
 a summary.
 
 `Test::Class::Moose` is a powerful testing framework for Perl. Out of the box
@@ -855,18 +855,19 @@ You can also look for information at:
 
 # SUPPORT
 
-Bugs may be submitted at [https://github.com/houseabsolute/test-class-moose/issues](https://github.com/houseabsolute/test-class-moose/issues).
+Bugs may be submitted at [https://github.com/Test-More/test-class-moose/issues](https://github.com/Test-More/test-class-moose/issues).
 
 I am also usually active on IRC as 'autarch' on `irc://irc.perl.org`.
 
 # SOURCE
 
-The source code repository for Test-Class-Moose can be found at [https://github.com/houseabsolute/test-class-moose](https://github.com/houseabsolute/test-class-moose).
+The source code repository for Test-Class-Moose can be found at [https://github.com/Test-More/test-class-moose](https://github.com/Test-More/test-class-moose).
 
 # AUTHORS
 
 - Curtis "Ovid" Poe <ovid@cpan.org>
 - Dave Rolsky <autarch@urth.org>
+- Chad Granum <exodist@cpan.org>
 
 # CONTRIBUTORS
 

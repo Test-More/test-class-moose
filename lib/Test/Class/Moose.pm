@@ -282,7 +282,7 @@ __END__
 =head1 DESCRIPTION
 
 See the L<Test::Class::Moose home
-page|http://houseabsolute.github.io/test-class-moose/> for a summary.
+page|http://test-more.github.io/test-class-moose/> for a summary.
 
 C<Test::Class::Moose> is a powerful testing framework for Perl. Out of the box
 you get:
