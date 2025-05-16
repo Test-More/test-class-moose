@@ -2,6 +2,8 @@ Revision history for Perl distribution Test-Class-Moose
 
 {{$NEXT}}
 
+1.00     2025-05-16
+
   * Update repository and Maint information after moving tot he Test-More github org
 
 0.99     2021-02-07
